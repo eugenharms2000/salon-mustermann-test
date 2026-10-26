@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salon Mustermann — Friseursalon</title>
+<style>
+  :root {
+    --cream: #FBF6F0;
+    --cream-dark: #F2E9DE;
+    --ink: #2B2420;
+    --ink-soft: #6B5F55;
+    --terracotta: #C1693C;
+    --terracotta-dark: #A4542C;
+    --border: #E7DACB;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Georgia', 'Iowan Old Style', serif;
+    background: var(--cream);
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+  a { color: inherit; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(251,246,240,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--border);
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 18px; padding-bottom: 18px; }
+  .logo { font-size: 1.35rem; font-weight: 700; letter-spacing: 0.01em; }
+  nav { display: flex; gap: 28px; font-size: 0.95rem; }
+  nav a { text-decoration: none; color: var(--ink-soft); }
+  nav a:hover, nav a:focus-visible { color: var(--terracotta-dark); }
+  .btn {
+    display: inline-block;
+    padding: 11px 22px;
+    border-radius: 999px;
+    background: var(--terracotta);
+    color: #fff;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background 0.15s ease;
+  }
+  .btn:hover, .btn:focus-visible { background: var(--terracotta-dark); }
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--terracotta);
+    color: var(--terracotta-dark);
+  }
+  .btn-outline:hover { background: var(--terracotta); color: #fff; }
+
+  /* Hero */
+  .hero { padding: 96px 0 88px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+  .hero h1 { font-size: clamp(2.3rem, 4.2vw, 3.4rem); line-height: 1.12; margin: 0 0 22px; }
+  .hero p.lead { font-family: inherit; font-size: 1.15rem; color: var(--ink-soft); margin: 0 0 32px; max-width: 42ch; }
+  .hero .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-visual {
+    aspect-ratio: 4/5;
+    border-radius: 20px;
+    background: linear-gradient(165deg, var(--cream-dark), #E3D2BD);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+
+  section { padding: 72px 0; }
+  .section-head { max-width: 56ch; margin-bottom: 44px; }
+  .eyebrow { font-family: inherit; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta-dark); font-weight: 700; margin: 0 0 10px; }
+  h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); margin: 0 0 12px; }
+  .section-head p { color: var(--ink-soft); margin: 0; font-size: 1.02rem; }
+
+  /* Leistungen */
+  .services { border-top: 1px solid var(--border); background: var(--cream-dark); }
+  .service-list { display: grid; gap: 0; border-top: 1px solid var(--border); }
+  .service-row {
+    display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline;
+    padding: 20px 0; border-bottom: 1px solid var(--border);
+  }
+  .service-row .name { font-size: 1.08rem; }
+  .service-row .desc { font-family: var(--sans); font-size: 0.88rem; color: var(--ink-soft); margin-top: 4px; }
+  .service-row .price { font-weight: 700; color: var(--terracotta-dark); white-space: nowrap; }
+
+  /* Team */
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .team-card { text-align: center; }
+  .team-avatar {
+    width: 92px; height: 92px; border-radius: 50%; margin: 0 auto 14px;
+    background: var(--cream-dark); border: 1px solid var(--border);
+  }
+  .team-card .role { font-family: inherit; font-size: 0.85rem; color: var(--ink-soft); }
+
+  /* Kontakt */
+  .contact { border-top: 1px solid var(--border); }
+  .contact .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .contact dt { font-weight: 700; margin-top: 18px; }
+  .contact dt:first-child { margin-top: 0; }
+  .contact dd { margin: 4px 0 0; color: var(--ink-soft); }
+  .map-box {
+    border-radius: var(--radius);
+    background: var(--cream-dark);
+    border: 1px solid var(--border);
+    min-height: 220px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-soft); font-size: 0.9rem;
+  }
+
+  footer { padding: 32px 0; border-top: 1px solid var(--border); }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--ink-soft); }
+
+  @media (max-width: 760px) {
+    nav { display: none; }
+    .hero .wrap { grid-template-columns: 1fr; }
+    .hero-visual { order: -1; aspect-ratio: 16/10; }
+    .team-grid { grid-template-columns: 1fr; }
+    .contact .wrap { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--terracotta-dark); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">Salon Mustermann</div>
+    <nav class="sans">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#team">Team</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="btn sans" href="tel:+4912345678">Termin anrufen</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow sans">Friseursalon in Osnabrück</p>
+      <h1>Ihr Haarschnitt,<br>mit Zeit und Handwerk.</h1>
+      <p class="lead sans">Wir nehmen uns Zeit für Ihre Haare — ehrliche Beratung, handwerkliche Sorgfalt, eine ruhige Atmosphäre zum Durchatmen.</p>
+      <div class="cta-row">
+        <a class="btn sans" href="tel:+4912345678">Termin anrufen</a>
+        <a class="btn btn-outline sans" href="#leistungen">Leistungen ansehen</a>
+      </div>
+    </div>
+    <div class="hero-visual sans">Foto vom Salon folgt</div>
+  </div>
+</section>
+
+<section class="services" id="leistungen">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow sans">Leistungen</p>
+      <h2>Was wir für Sie tun</h2>
+      <p class="sans">Alle Preise verstehen sich pro Behandlung, Beratung ist immer inklusive.</p>
+    </div>
+    <div class="service-list sans">
+      <div class="service-row">
+        <div>
+          <div class="name">Damenhaarschnitt</div>
+          <div class="desc">Waschen, Schneiden, Föhnen</div>
+        </div>
+        <div class="price">ab 38 €</div>
+      </div>
+      <div class="service-row">
+        <div>
+          <div class="name">Herrenhaarschnitt</div>
+          <div class="desc">Waschen, Schneiden, Styling</div>
+        </div>
+        <div class="price">ab 26 €</div>
+      </div>
+      <div class="service-row">
+        <div>
+          <div class="name">Coloration</div>
+          <div class="desc">inkl. Beratung und Pflege</div>
+        </div>
+        <div class="price">ab 65 €</div>
+      </div>
+      <div class="service-row">
+        <div>
+          <div class="name">Hochsteckfrisur</div>
+          <div class="desc">für besondere Anlässe</div>
+        </div>
+        <div class="price">ab 55 €</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="team" id="team">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow sans">Unser Team</p>
+      <h2>Die Hände, denen Sie vertrauen</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar"></div>
+        <div class="name">Frau Mustermann</div>
+        <div class="role sans">Inhaberin &amp; Meisterin</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar"></div>
+        <div class="name">Team-Mitglied</div>
+        <div class="role sans">Stylistin</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar"></div>
+        <div class="name">Team-Mitglied</div>
+        <div class="role sans">Colorist</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow sans">Kontakt &amp; Öffnungszeiten</p>
+      <h2>Vorbeikommen oder anrufen</h2>
+      <dl class="sans">
+        <dt>Adresse</dt>
+        <dd>Musterstraße 12, 49074 Osnabrück</dd>
+        <dt>Telefon</dt>
+        <dd><a href="tel:+4912345678">0123 / 456 78 90</a></dd>
+        <dt>Öffnungszeiten</dt>
+        <dd>Di–Fr 9–18 Uhr · Sa 9–13 Uhr</dd>
+      </dl>
+    </div>
+    <div class="map-box sans">Karte folgt</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Salon Mustermann</span>
+    <span>Website von Eugen &amp; Jessi Harms</span>
+  </div>
+</footer>
+
+</body>
+</html>
