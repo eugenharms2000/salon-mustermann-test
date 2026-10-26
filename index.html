@@ -4,251 +4,260 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salon Mustermann — Friseursalon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #FBF6F0;
-    --cream-dark: #F2E9DE;
-    --ink: #2B2420;
-    --ink-soft: #6B5F55;
-    --terracotta: #C1693C;
-    --terracotta-dark: #A4542C;
-    --border: #E7DACB;
-    --radius: 14px;
+    --cream: #EDE7D8;
+    --cream-soft: #F4EFE3;
+    --olive: #6E7A5A;
+    --olive-dark: #4B5540;
+    --ink: #2E2E26;
+    --ink-soft: #6B6A5E;
+    --border: #DCD3BC;
   }
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    font-family: 'Georgia', 'Iowan Old Style', serif;
     background: var(--cream);
     color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
     text-wrap: pretty;
   }
-  .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+  .serif { font-family: 'Playfair Display', serif; }
+  .script { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; color: var(--olive-dark); }
   a { color: inherit; }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-  /* Header */
-  header {
-    position: sticky; top: 0; z-index: 10;
-    background: rgba(251,246,240,0.92);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid var(--border);
+  .nav-float { position: sticky; top: 18px; z-index: 20; margin: 18px auto 0; max-width: 1072px; }
+  .nav-pill {
+    background: rgba(255,255,255,0.88); backdrop-filter: blur(8px); border-radius: 999px;
+    padding: 12px 22px; display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 8px 24px rgba(46,42,30,0.08);
   }
-  header .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 18px; padding-bottom: 18px; }
-  .logo { font-size: 1.35rem; font-weight: 700; letter-spacing: 0.01em; }
-  nav { display: flex; gap: 28px; font-size: 0.95rem; }
-  nav a { text-decoration: none; color: var(--ink-soft); }
-  nav a:hover, nav a:focus-visible { color: var(--terracotta-dark); }
-  .btn {
-    display: inline-block;
-    padding: 11px 22px;
-    border-radius: 999px;
-    background: var(--terracotta);
-    color: #fff;
-    text-decoration: none;
-    font-family: inherit;
-    font-size: 0.95rem;
-    font-weight: 600;
-    transition: background 0.15s ease;
-  }
-  .btn:hover, .btn:focus-visible { background: var(--terracotta-dark); }
-  .btn-outline {
-    background: transparent;
-    border: 1.5px solid var(--terracotta);
-    color: var(--terracotta-dark);
-  }
-  .btn-outline:hover { background: var(--terracotta); color: #fff; }
+  .nav-pill .brand { font-weight: 600; font-size: 0.98rem; letter-spacing: 0.01em; }
+  .nav-pill nav { display: flex; gap: 26px; font-size: 0.88rem; color: var(--ink-soft); }
+  .nav-pill nav a { text-decoration: none; }
+  .nav-pill nav a:hover { color: var(--olive-dark); }
+  .btn { display: inline-block; padding: 10px 20px; border-radius: 999px; background: var(--olive-dark); color: #fff; text-decoration: none; font-size: 0.86rem; font-weight: 600; }
+  .btn:hover { background: var(--ink); }
 
-  /* Hero */
-  .hero { padding: 96px 0 88px; }
-  .hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
-  .hero h1 { font-size: clamp(2.3rem, 4.2vw, 3.4rem); line-height: 1.12; margin: 0 0 22px; }
-  .hero p.lead { font-family: inherit; font-size: 1.15rem; color: var(--ink-soft); margin: 0 0 32px; max-width: 42ch; }
-  .hero .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
-  .hero-visual {
-    aspect-ratio: 4/5;
-    border-radius: 20px;
-    background: linear-gradient(165deg, var(--cream-dark), #E3D2BD);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--ink-soft);
-    font-size: 0.9rem;
+  .hero { padding: 20px 0 0; }
+  .hero-photo {
+    position: relative; height: 62vh; min-height: 440px; max-height: 620px; border-radius: 28px;
+    background: linear-gradient(to top, rgba(30,30,20,0.55), rgba(30,30,20,0.05) 45%), linear-gradient(160deg, #B9A788, #8E9C78 55%, #4B5540);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff; padding: 40px 24px;
   }
+  .hero-photo h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); margin: 0 0 14px; font-weight: 500; }
+  .hero-photo h1 em { font-style: italic; }
+  .hero-photo p { max-width: 42ch; margin: 0; font-size: 0.98rem; opacity: 0.92; }
+  .hero-cta { margin: -26px auto 0; position: relative; z-index: 2; display: flex; justify-content: center; }
+  .hero-cta .btn { padding: 15px 34px; box-shadow: 0 10px 28px rgba(46,42,30,0.18); }
 
-  section { padding: 72px 0; }
-  .section-head { max-width: 56ch; margin-bottom: 44px; }
-  .eyebrow { font-family: inherit; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta-dark); font-weight: 700; margin: 0 0 10px; }
-  h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); margin: 0 0 12px; }
-  .section-head p { color: var(--ink-soft); margin: 0; font-size: 1.02rem; }
+  section { padding: 84px 0; }
+  .center { text-align: center; }
+  h2.serif { font-size: clamp(1.9rem, 3vw, 2.5rem); font-weight: 500; line-height: 1.25; margin: 0 0 40px; }
 
-  /* Leistungen */
-  .services { border-top: 1px solid var(--border); background: var(--cream-dark); }
-  .service-list { display: grid; gap: 0; border-top: 1px solid var(--border); }
-  .service-row {
-    display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline;
-    padding: 20px 0; border-bottom: 1px solid var(--border);
-  }
-  .service-row .name { font-size: 1.08rem; }
-  .service-row .desc { font-family: var(--sans); font-size: 0.88rem; color: var(--ink-soft); margin-top: 4px; }
-  .service-row .price { font-weight: 700; color: var(--terracotta-dark); white-space: nowrap; }
+  .tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 36px; }
+  .tab { padding: 10px 22px; border-radius: 999px; font-size: 0.86rem; font-weight: 600; background: var(--cream-soft); color: var(--ink-soft); cursor: pointer; border: 1px solid var(--border); }
+  .tab.active { background: var(--olive-dark); color: #fff; border-color: var(--olive-dark); }
 
-  /* Team */
-  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-  .team-card { text-align: center; }
-  .team-avatar {
-    width: 92px; height: 92px; border-radius: 50%; margin: 0 auto 14px;
-    background: var(--cream-dark); border: 1px solid var(--border);
-  }
-  .team-card .role { font-family: inherit; font-size: 0.85rem; color: var(--ink-soft); }
-
-  /* Kontakt */
-  .contact { border-top: 1px solid var(--border); }
-  .contact .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
-  .contact dt { font-weight: 700; margin-top: 18px; }
-  .contact dt:first-child { margin-top: 0; }
-  .contact dd { margin: 4px 0 0; color: var(--ink-soft); }
-  .map-box {
-    border-radius: var(--radius);
-    background: var(--cream-dark);
-    border: 1px solid var(--border);
-    min-height: 220px;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--ink-soft); font-size: 0.9rem;
-  }
-
-  footer { padding: 32px 0; border-top: 1px solid var(--border); }
-  footer .wrap { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--ink-soft); }
+  .feature-card { background: var(--olive-dark); color: #fff; border-radius: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; overflow: hidden; }
+  .feature-card .text { padding: 48px; }
+  .feature-card .text h3 { font-size: 1.3rem; margin: 0 0 14px; font-weight: 500; }
+  .feature-card .text p { color: rgba(255,255,255,0.82); line-height: 1.6; font-size: 0.94rem; }
+  .feature-card .photo { background: linear-gradient(155deg, #D9CDAE, #96A481); min-height: 260px; }
+  .feature-pane { display: none; }
+  .feature-pane.active { display: grid; }
 
   @media (max-width: 760px) {
-    nav { display: none; }
-    .hero .wrap { grid-template-columns: 1fr; }
-    .hero-visual { order: -1; aspect-ratio: 16/10; }
-    .team-grid { grid-template-columns: 1fr; }
-    .contact .wrap { grid-template-columns: 1fr; gap: 28px; }
+    .feature-card { grid-template-columns: 1fr; }
+    .feature-card .photo { min-height: 180px; order: -1; }
   }
 
-  :focus-visible { outline: 2px solid var(--terracotta-dark); outline-offset: 2px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .g-card { background: var(--cream-soft); border: 1px solid var(--border); border-radius: 20px; padding: 26px; }
+  .g-card h4 { font-size: 1.02rem; margin: 0 0 12px; font-weight: 600; }
+  .g-card ul { margin: 0 0 18px; padding-left: 18px; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.7; }
+  .g-card .g-photo { border-radius: 14px; height: 130px; background: linear-gradient(150deg, #C9BE9E, #8E9C78); }
+  @media (max-width: 760px) { .grid-3 { grid-template-columns: 1fr; } }
+
+  .service-list { border-top: 1px solid var(--border); }
+  .service-row { display: flex; justify-content: space-between; align-items: baseline; padding: 20px 4px; border-bottom: 1px solid var(--border); }
+  .service-row .name { font-weight: 600; }
+  .service-row .desc { color: var(--ink-soft); font-size: 0.86rem; margin-top: 3px; }
+  .service-row .price { color: var(--olive-dark); font-weight: 700; white-space: nowrap; }
+
+  .contact-card { background: var(--olive-dark); color: #fff; border-radius: 24px; padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .contact-card dt { font-weight: 600; margin-top: 16px; opacity: 0.7; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .contact-card dt:first-child { margin-top: 0; }
+  .contact-card dd { margin: 4px 0 0; font-size: 1.02rem; }
+  .map-box { border-radius: 16px; background: rgba(255,255,255,0.12); min-height: 160px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); font-size: 0.86rem; }
+  @media (max-width: 760px) { .contact-card { grid-template-columns: 1fr; padding: 32px; } }
+
+  footer { padding: 32px 0 48px; }
+  footer .wrap { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--ink-soft); }
+
+  :focus-visible { outline: 2px solid var(--olive-dark); outline-offset: 2px; }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <div class="logo">Salon Mustermann</div>
-    <nav class="sans">
+<div class="nav-float wrap">
+  <div class="nav-pill">
+    <div class="brand">Salon <span class="script">Mustermann</span></div>
+    <nav>
       <a href="#leistungen">Leistungen</a>
-      <a href="#team">Team</a>
+      <a href="#warum">Über uns</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <a class="btn sans" href="tel:+4912345678">Termin anrufen</a>
+    <a class="btn" href="tel:+4912345678">Termin</a>
   </div>
-</header>
+</div>
 
-<section class="hero">
+<div class="hero wrap">
+  <div class="hero-photo">
+    <h1 class="serif">Salon <em>&amp;</em> Mustermann</h1>
+    <p>Ein ruhiger Ort für Ihre Haare — Zeit, Handwerk und ehrliche Beratung, mitten in Osnabrück.</p>
+  </div>
+</div>
+<div class="hero-cta">
+  <a class="btn" href="tel:+4912345678">Termin anrufen</a>
+</div>
+
+<section id="warum">
   <div class="wrap">
-    <div>
-      <p class="eyebrow sans">Friseursalon in Osnabrück</p>
-      <h1>Ihr Haarschnitt,<br>mit Zeit und Handwerk.</h1>
-      <p class="lead sans">Wir nehmen uns Zeit für Ihre Haare — ehrliche Beratung, handwerkliche Sorgfalt, eine ruhige Atmosphäre zum Durchatmen.</p>
-      <div class="cta-row">
-        <a class="btn sans" href="tel:+4912345678">Termin anrufen</a>
-        <a class="btn btn-outline sans" href="#leistungen">Leistungen ansehen</a>
+    <h2 class="serif center">Warum Salon <em class="script">&amp;</em> Mustermann<br>kein gewöhnlicher Friseur ist</h2>
+
+    <div class="tabs" role="tablist">
+      <div class="tab active" data-tab="geschichte">Geschichte</div>
+      <div class="tab" data-tab="philosophie">Philosophie</div>
+      <div class="tab" data-tab="team">Team</div>
+    </div>
+
+    <div class="feature-pane active" data-pane="geschichte">
+      <div class="feature-card">
+        <div class="text">
+          <h3 class="serif">Seit 2014 in Osnabrück</h3>
+          <p>Was als kleiner Salon mit zwei Stühlen begann, ist heute ein Ort, an dem sich Stammkunden seit Jahren wiedersehen. Handwerk, das man spürt, statt Trends, die man nur sieht.</p>
+        </div>
+        <div class="photo"></div>
       </div>
     </div>
-    <div class="hero-visual sans">Foto vom Salon folgt</div>
+    <div class="feature-pane" data-pane="philosophie">
+      <div class="feature-card">
+        <div class="text">
+          <h3 class="serif">Beratung vor Schnitt</h3>
+          <p>Jeder Termin beginnt mit einem Gespräch, nicht mit der Schere. Wir hören zu, bevor wir schneiden — damit Sie mit dem rausgehen, was Sie sich vorgestellt haben.</p>
+        </div>
+        <div class="photo"></div>
+      </div>
+    </div>
+    <div class="feature-pane" data-pane="team">
+      <div class="feature-card">
+        <div class="text">
+          <h3 class="serif">Drei Hände, ein Handwerk</h3>
+          <p>Unser kleines Team bildet sich regelmäßig weiter und bringt jeweils eigene Spezialgebiete mit — von Coloration bis Hochsteckfrisur.</p>
+        </div>
+        <div class="photo"></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="services" id="leistungen">
+<section>
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow sans">Leistungen</p>
-      <h2>Was wir für Sie tun</h2>
-      <p class="sans">Alle Preise verstehen sich pro Behandlung, Beratung ist immer inklusive.</p>
+    <h2 class="serif center">Für jeden Anlass<br>die passende Pflege</h2>
+    <div class="grid-3">
+      <div class="g-card">
+        <h4>Für den Alltag</h4>
+        <ul>
+          <li>Waschen, Schneiden, Föhnen</li>
+          <li>Pflegeberatung für zu Hause</li>
+          <li>Kurze Wartezeiten unter der Woche</li>
+        </ul>
+        <div class="g-photo"></div>
+      </div>
+      <div class="g-card">
+        <h4>Für Veränderung</h4>
+        <ul>
+          <li>Coloration &amp; Strähnen</li>
+          <li>Ausführliche Erstberatung</li>
+          <li>Pflegeplan für die Übergangszeit</li>
+        </ul>
+        <div class="g-photo"></div>
+      </div>
+      <div class="g-card">
+        <h4>Für besondere Anlässe</h4>
+        <ul>
+          <li>Hochsteckfrisuren</li>
+          <li>Termine auch am Wochenende</li>
+          <li>Probetermin vor der Feier möglich</li>
+        </ul>
+        <div class="g-photo"></div>
+      </div>
     </div>
-    <div class="service-list sans">
+  </div>
+</section>
+
+<section id="leistungen">
+  <div class="wrap">
+    <h2 class="serif center">Leistungen &amp; Preise</h2>
+    <div class="service-list">
       <div class="service-row">
-        <div>
-          <div class="name">Damenhaarschnitt</div>
-          <div class="desc">Waschen, Schneiden, Föhnen</div>
-        </div>
+        <div><div class="name">Damenhaarschnitt</div><div class="desc">Waschen, Schneiden, Föhnen</div></div>
         <div class="price">ab 38 €</div>
       </div>
       <div class="service-row">
-        <div>
-          <div class="name">Herrenhaarschnitt</div>
-          <div class="desc">Waschen, Schneiden, Styling</div>
-        </div>
+        <div><div class="name">Herrenhaarschnitt</div><div class="desc">Waschen, Schneiden, Styling</div></div>
         <div class="price">ab 26 €</div>
       </div>
       <div class="service-row">
-        <div>
-          <div class="name">Coloration</div>
-          <div class="desc">inkl. Beratung und Pflege</div>
-        </div>
+        <div><div class="name">Coloration</div><div class="desc">inkl. Beratung und Pflege</div></div>
         <div class="price">ab 65 €</div>
       </div>
       <div class="service-row">
-        <div>
-          <div class="name">Hochsteckfrisur</div>
-          <div class="desc">für besondere Anlässe</div>
-        </div>
+        <div><div class="name">Hochsteckfrisur</div><div class="desc">für besondere Anlässe</div></div>
         <div class="price">ab 55 €</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="team" id="team">
+<section id="kontakt">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow sans">Unser Team</p>
-      <h2>Die Hände, denen Sie vertrauen</h2>
-    </div>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-avatar"></div>
-        <div class="name">Frau Mustermann</div>
-        <div class="role sans">Inhaberin &amp; Meisterin</div>
+    <div class="contact-card">
+      <div>
+        <h2 class="serif" style="margin-bottom:20px;font-size:1.6rem;">Vorbeikommen<br>oder anrufen</h2>
+        <dl>
+          <dt>Adresse</dt><dd>Musterstraße 12, 49074 Osnabrück</dd>
+          <dt>Telefon</dt><dd><a href="tel:+4912345678">0123 / 456 78 90</a></dd>
+          <dt>Öffnungszeiten</dt><dd>Di–Fr 9–18 Uhr · Sa 9–13 Uhr</dd>
+        </dl>
       </div>
-      <div class="team-card">
-        <div class="team-avatar"></div>
-        <div class="name">Team-Mitglied</div>
-        <div class="role sans">Stylistin</div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar"></div>
-        <div class="name">Team-Mitglied</div>
-        <div class="role sans">Colorist</div>
-      </div>
+      <div class="map-box">Karte folgt</div>
     </div>
-  </div>
-</section>
-
-<section class="contact" id="kontakt">
-  <div class="wrap">
-    <div>
-      <p class="eyebrow sans">Kontakt &amp; Öffnungszeiten</p>
-      <h2>Vorbeikommen oder anrufen</h2>
-      <dl class="sans">
-        <dt>Adresse</dt>
-        <dd>Musterstraße 12, 49074 Osnabrück</dd>
-        <dt>Telefon</dt>
-        <dd><a href="tel:+4912345678">0123 / 456 78 90</a></dd>
-        <dt>Öffnungszeiten</dt>
-        <dd>Di–Fr 9–18 Uhr · Sa 9–13 Uhr</dd>
-      </dl>
-    </div>
-    <div class="map-box sans">Karte folgt</div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
+  <div class="wrap" style="display:flex;justify-content:space-between;">
     <span>© 2026 Salon Mustermann</span>
     <span>Website von Eugen &amp; Jessi Harms</span>
   </div>
 </footer>
 
+<script>
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.feature-pane').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`.feature-pane[data-pane="${tab.dataset.tab}"]`).classList.add('active');
+    });
+  });
+</script>
+
 </body>
 </html>
-<!-- Auto-Deploy Test Mon Oct 26 08:21:23 UTC 2026 -->
